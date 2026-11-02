@@ -198,6 +198,9 @@
       border-radius: 24px;
       box-shadow: 0 6px 24px #67334806;
     }
+    .live-card { margin-top: 20px; padding: 28px; border-radius: 16px; background: linear-gradient(120deg, #fff0f5, #fff0e3); }
+    .live-card h3 { margin: 8px 0; font-size: clamp(1.2rem, 4vw, 1.6rem); }
+    .live-card p { color: #775d6c; }
     .video-player { margin-top: 20px; }
     @media (max-width: 600px) {
       .videos { padding: 20px 16px; margin-bottom: 20px; border-radius: 18px; }
@@ -233,8 +236,11 @@
     <span class="section-label">LIVE ROOM</span>
     <h2 id="stream-title">直播间</h2>
     <p class="stream-note">把日常变得可爱一点，一起去直播间聊聊天吧。</p>
-    <iframe loading="lazy" title="桃梓Azusa的 Bilibili 直播" src="https://live.bilibili.com/1702263460?broadcast_type=0&amp;is_room_feed=1&amp;spm_id_from=333.1387.to_liveroom.0.click&amp;live_from=86002" allowfullscreen></iframe>
-    <p class="stream-note">如果上方画面无法显示，可以直接前往 Bilibili 观看。</p>
+    <div class="live-card">
+      <span class="section-label">BILIBILI · 直播间 1702263460</span>
+      <h3>来直播间，和桃梓见面</h3>
+      <p>直播请在 Bilibili 观看，点击下方链接即可前往。</p>
+    </div>
     <a class="stream-link" href="https://live.bilibili.com/1702263460?broadcast_type=0&amp;is_room_feed=1&amp;spm_id_from=333.1387.to_liveroom.0.click&amp;live_from=86002" target="_blank" rel="noopener noreferrer">前往 Bilibili 直播间（新窗口）</a>
   </section>
 
