@@ -81,7 +81,7 @@
       margin: 0;
     }
 
-    iframe {
+    .video-player iframe {
       display: block;
       width: 100%;
       height: auto;
@@ -106,20 +106,8 @@
       border-radius: 4px;
     }
 
-    .chat-box {
-      display: grid;
-      place-items: center;
-      width: 100%;
-      min-height: 180px;
-      background: #fefefe;
-      border: 2px dashed #ccc;
-      border-radius: 12px;
-      padding: 20px;
-      font-style: italic;
-      color: #666;
-      text-align: center;
-    }
-
+    .giscus { width: 100%; margin-top: 20px; }
+    .giscus iframe { display: block; width: 100%; border: 0; }
     footer {
       text-align: center;
       padding: 16px 20px 30px;
@@ -141,9 +129,6 @@
         font-size: 1.25rem;
       }
 
-      .chat-box {
-        min-height: 140px;
-      }
     }
     :root { --rose: #ac3659; --ink: #493342; }
     html { scroll-behavior: smooth; scroll-padding-top: 24px; }
@@ -175,8 +160,6 @@
     .about p { max-width: 620px; margin: auto; }
     .stream-link { font-weight: 700; }
     .stream-note { color: #775d6c; font-size: .875rem; margin-top: 10px; }
-    .chat-box { border-color: #edd4dd; background: #fff9fb; font-style: normal; gap: 4px; align-content: center; }
-    .chat-box span { font-size: .875rem; color: #775d6c; }
     details { margin-top: 18px; border-top: 1px solid #f0dfe3; padding-top: 14px; }
     summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 600; }
     details p { padding: 8px 0; color: #775d6c; }
@@ -212,7 +195,7 @@
   <a class="skip-link" href="#main">跳到主要内容</a>
   <nav class="site-nav" aria-label="主要导航">
     <a class="brand" href="#">桃梓Azusa ✿</a>
-    <div class="nav-links"><a href="#about">关于我</a><a href="#stream">看直播</a><a href="#videos">我的视频</a><a href="#fans">粉丝专区</a></div>
+    <div class="nav-links"><a href="#about">关于我</a><a href="#stream">看直播</a><a href="#videos">我的视频</a><a href="#chat">留言</a><a href="#fans">粉丝专区</a></div>
   </nav>
   <header>
     <div class="eyebrow">AZUSA · 一个温暖的小世界</div>
@@ -258,17 +241,31 @@
 
   <section class="chat" id="chat" aria-labelledby="chat-title">
     <span class="section-label">COMMUNITY</span>
-    <h2 id="chat-title">粉丝聊天室</h2>
-    <div class="chat-box">
-      <strong>聊天系统待接入中</strong>
-      <span>想和大家聊聊？先来 Bilibili 直播间见吧。</span>
-    </div>
+    <h2 id="chat-title">粉丝留言区</h2>
+    <p>欢迎留下想对桃梓说的话，也可以回复其他人的留言。发表评论需要登录 GitHub 账号。</p>
+    <div class="giscus"></div>
+    <script src="https://giscus.app/client.js"
+            data-repo="Azusatake/new-repository"
+            data-repo-id="R_kgDOOd0YRw"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOOd0YR84DKN1k"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async></script>
+    <p class="stream-note">留言由 Giscus 提供并保存在 GitHub Discussions。若评论区未显示，请检查网络，或<a href="https://github.com/Azusatake/new-repository/discussions" target="_blank" rel="noopener noreferrer">前往 GitHub 查看讨论（新窗口）</a>。</p>
+    <noscript><p>请启用 JavaScript 加载评论区，或通过上方链接前往 GitHub 参与讨论。</p></noscript>
   </section>
 
   <section class="fans" id="fans" aria-labelledby="fans-title">
     <span class="section-label">FOR YOU</span>
     <h2 id="fans-title">粉丝专区</h2>
-    <p>谢谢每一份陪伴与喜欢。留言、投稿和粉丝活动正在筹备，后续消息会在这里与大家分享。</p>
+    <p>谢谢每一份陪伴与喜欢。欢迎在留言区交流；投稿和粉丝活动的后续消息会在这里与大家分享。</p>
     <details><summary>在哪里关注直播动态？</summary><p>点击上方“前往 Bilibili 直播间”，在 Bilibili 关注主播，查看最新开播动态。</p></details>
   </section>
 
