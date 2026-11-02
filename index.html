@@ -190,13 +190,26 @@
       .about { padding: 24px 20px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    .videos {
+      padding: 30px;
+      margin-bottom: 28px;
+      background: #fff;
+      border: 1px solid #f0dfe3;
+      border-radius: 24px;
+      box-shadow: 0 6px 24px #67334806;
+    }
+    .video-player { margin-top: 20px; }
+    @media (max-width: 600px) {
+      .videos { padding: 20px 16px; margin-bottom: 20px; border-radius: 18px; }
+      .nav-links { column-gap: 16px; row-gap: 0; }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
   <nav class="site-nav" aria-label="主要导航">
     <a class="brand" href="#">桃梓Azusa ✿</a>
-    <div class="nav-links"><a href="#about">关于我</a><a href="#stream">看直播</a><a href="#fans">粉丝专区</a></div>
+    <div class="nav-links"><a href="#about">关于我</a><a href="#stream">看直播</a><a href="#videos">我的视频</a><a href="#fans">粉丝专区</a></div>
   </nav>
   <header>
     <div class="eyebrow">AZUSA · 一个温暖的小世界</div>
@@ -225,6 +238,17 @@
     <a class="stream-link" href="https://live.bilibili.com/1702263460?broadcast_type=0&amp;is_room_feed=1&amp;spm_id_from=333.1387.to_liveroom.0.click&amp;live_from=86002" target="_blank" rel="noopener noreferrer">前往 Bilibili 直播间（新窗口）</a>
   </section>
 
+
+  <section class="videos" id="videos" aria-labelledby="videos-title">
+    <span class="section-label">MY VIDEOS</span>
+    <h2 id="videos-title">我的视频</h2>
+    <p>把喜欢的瞬间留在这里，和你一起慢慢回看。</p>
+    <div class="video-player">
+      <iframe loading="lazy" title="桃梓Azusa的视频作品 BV1hSngzHEe4" src="https://player.bilibili.com/player.html?bvid=BV1hSngzHEe4&amp;page=1&amp;autoplay=0" allowfullscreen></iframe>
+    </div>
+    <p class="stream-note">如果播放器无法显示，可以在 Bilibili 打开观看。</p>
+    <a class="stream-link" href="https://www.bilibili.com/video/BV1hSngzHEe4/" target="_blank" rel="noopener noreferrer">在 Bilibili 观看完整视频（新窗口）</a>
+  </section>
 
   <section class="chat" id="chat" aria-labelledby="chat-title">
     <span class="section-label">COMMUNITY</span>
