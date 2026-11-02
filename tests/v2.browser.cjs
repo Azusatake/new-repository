@@ -34,6 +34,13 @@ const base = process.env.AZUSA_TEST_URL || 'http://127.0.0.1:8001/';
       }));
       assert.equal(layout.overflow, false, `No page overflow at ${width}`);
       assert.equal(layout.images, true); assert.equal(layout.commentsHeight, 640); assert.equal(layout.commentsRatio, 'auto'); assert.equal(layout.badLinks, 0);
+      const art = await page.locator('.character-art img').evaluate(img => ({
+        source: img.currentSrc, ratio: img.getBoundingClientRect().width / img.getBoundingClientRect().height,
+        originalRatio: img.naturalWidth / img.naturalHeight, fit: getComputedStyle(img).objectFit
+      }));
+      assert.ok(art.source.includes('azusa-standing-'));
+      assert.ok(Math.abs(art.ratio - art.originalRatio) < 0.002, 'Full figure keeps its original proportions');
+      assert.equal(art.fit, 'contain');
       if (width <= 760) {
         const menu = page.getByRole('button', { name: '菜单' });
         assert.equal(await page.locator('#nav-links').isVisible(), false);

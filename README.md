@@ -17,7 +17,7 @@ python3 -m http.server 8001 --bind 127.0.0.1
 - `styles.css`：统一设计变量、响应式布局、动效与无障碍焦点样式。
 - `site-data.js`：视频数据和四个预留分类。添加作品只需向 `videos` 数组加入对象。
 - `app.js`：手机菜单、视频筛选、点击加载播放器、滚动淡入。
-- `assets/`：由原头像缩小生成的 WebP 和花形 SVG favicon。`avatar.jpg` 原图保留，分享预览继续使用该图。
+- `assets/`：由原头像和用户提供的官方立绘生成的响应式 WebP，以及花形 SVG favicon。`avatar.jpg` 原图保留，分享预览继续使用该图。
 - `tests/v2.browser.cjs`：浏览器回归检查。
 - `vs/`：原有资源，未改动。
 
@@ -29,7 +29,7 @@ python3 -m http.server 8001 --bind 127.0.0.1
 
 ### 替换角色图 / 资料
 
-首屏 `.character-art` 中的 `<picture>` 可替换为真实立绘，更新 `srcset`、宽高和 alt；按素材比例调整 `.character-art img`。目前使用原始角色头像，没有引入 AI 人物。角色资料在 `#about` 的 `.profile` 中维护。
+首屏已使用用户提供的 `立绘.zip` 内官方立绘，生成 `assets/azusa-standing-640.webp` 和 `assets/azusa-standing-960.webp`，保留原图白色背景、完整人物比例，不裁切人物或重绘。原头像仍保留在角色介绍中。以后更换立绘时更新 `.character-art` 中的 `srcset`、宽高和 alt，并同步 CSS 比例。原始 4243 × 6000 PNG 保存在上传附件中，站点不加载该大文件。角色资料在 `#about` 的 `.profile` 中维护。
 
 ### 直播与粉丝互动
 
