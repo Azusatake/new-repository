@@ -1,250 +1,88 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="欢迎来到桃梓Azusa的温暖小世界，了解主播、前往直播间，与大家一起发光。" />
-  <meta name="theme-color" content="#fff5f3" />
-  <title>虚拟主播 · 桃梓Azusa频道</title>
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      line-height: 1.7;
-      overflow-wrap: anywhere;
-      background-color: #f0f0f3;
-      color: #333;
-    }
-
-    header {
-      background: linear-gradient(to right, #ffafbd, #ffc3a0);
-      padding: 48px 20px;
-      text-align: center;
-      color: #5c2940;
-    }
-
-    header h1 {
-      font-size: clamp(1.65rem, 5vw, 2.5rem);
-      line-height: 1.35;
-      margin: 0;
-    }
-
-    header p {
-      margin: 12px auto 0;
-      max-width: 36em;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-    }
-
-    section {
-      width: calc(100% - 32px);
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .avatar {
-      text-align: center;
-      padding: 32px 0;
-    }
-
-    .avatar img {
-      display: block;
-      width: clamp(120px, 32vw, 180px);
-      max-width: 100%;
-      height: auto;
-      aspect-ratio: 1;
-      object-fit: cover;
-      margin: 0 auto;
-      border-radius: 50%;
-      border: 4px solid #ffafbd;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-
-    .about, .stream, .chat, .fans {
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-bottom: 28px;
-    }
-
-    h2 {
-      margin: 0 0 16px;
-      line-height: 1.4;
-      color: #b83257;
-    }
-
-    section p {
-      margin: 0;
-    }
-
-    .video-player iframe {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      border: none;
-      border-radius: 12px;
-      background: #f0f0f3;
-    }
-
-    .stream-link {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      margin-top: 12px;
-      color: #a52b4e;
-      text-underline-offset: 4px;
-    }
-
-    .stream-link:focus-visible {
-      outline: 3px solid #a52b4e;
-      outline-offset: 4px;
-      border-radius: 4px;
-    }
-
-    .giscus { width: 100%; margin-top: 20px; }
-    .giscus iframe { display: block; width: 100%; border: 0; }
-    footer {
-      text-align: center;
-      padding: 16px 20px 30px;
-      font-size: 0.9em;
-      color: #666;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        padding: 32px 16px;
-      }
-
-      .about, .stream, .chat, .fans {
-        padding: 20px 16px;
-        margin-bottom: 20px;
-      }
-
-      h2 {
-        font-size: 1.25rem;
-      }
-
-    }
-    :root { --rose: #ac3659; --ink: #493342; }
-    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
-    body { background: #fff8f6; color: var(--ink); }
-    a { color: var(--rose); }
-    a:focus-visible, summary:focus-visible { outline: 3px solid var(--rose); outline-offset: 5px; }
-    .skip-link { position: absolute; left: 16px; top: -100px; background: white; padding: 12px; z-index: 2; }
-    .skip-link:focus { top: 12px; }
-    .site-nav { max-width: 1060px; margin: auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .brand { font-weight: 800; text-decoration: none; letter-spacing: .04em; }
-    .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; font-size: .9rem; }
-    header { position: relative; padding: 64px 20px 96px; background: radial-gradient(ellipse at 15% 20%, #ffe4ef, transparent 60%), linear-gradient(120deg, #fff0ec, #ffe5d4); }
-    .eyebrow { font-size: .75rem; letter-spacing: .22em; font-weight: 700; color: #97435d; margin-bottom: 20px; }
-    header h1 { max-width: 800px; margin: auto; }
-    .hero-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-    .button { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 10px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; background: var(--rose); color: white; }
-    .button.secondary { background: #fff9; color: var(--rose); border: 1px solid #dca9b7; }
-    .button:hover { filter: brightness(.94); }
-    main { padding-bottom: 16px; }
-    .avatar { position: relative; margin-top: -64px; padding: 0 0 28px; }
-    .avatar img { border: 6px solid #fff8f6; box-shadow: 0 10px 28px #74324820; }
-    .avatar figcaption { margin-top: 12px; font-size: .9rem; color: #775d6c; }
-    .avatar figure { margin: 0; }
-    .about, .stream, .chat, .fans { border: 1px solid #f0dfe3; border-radius: 24px; box-shadow: 0 6px 24px #67334806; }
-    .section-label { display: block; font-size: .7rem; letter-spacing: .18em; color: #846a78; margin-bottom: 8px; }
-    h2 { color: var(--ink); }
-    .about { text-align: center; padding: 36px; }
-    .about p { max-width: 620px; margin: auto; }
-    .stream-link { font-weight: 700; }
-    .stream-note { color: #775d6c; font-size: .875rem; margin-top: 10px; }
-    details { margin-top: 18px; border-top: 1px solid #f0dfe3; padding-top: 14px; }
-    summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 600; }
-    details p { padding: 8px 0; color: #775d6c; }
-    footer { color: #775d6c; }
-    @media (max-width: 600px) {
-      .site-nav { padding: 12px 16px; gap: 4px; }
-      .nav-links { gap: 16px; }
-      header { padding: 36px 20px 84px; }
-      .avatar { margin-top: -48px; }
-      .about, .stream, .chat, .fans { border-radius: 18px; }
-      .about { padding: 24px 20px; }
-    }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    .videos {
-      padding: 30px;
-      margin-bottom: 28px;
-      background: #fff;
-      border: 1px solid #f0dfe3;
-      border-radius: 24px;
-      box-shadow: 0 6px 24px #67334806;
-    }
-    .live-card { margin-top: 20px; padding: 28px; border-radius: 16px; background: linear-gradient(120deg, #fff0f5, #fff0e3); }
-    .live-card h3 { margin: 8px 0; font-size: clamp(1.2rem, 4vw, 1.6rem); }
-    .live-card p { color: #775d6c; }
-    .video-player { margin-top: 20px; }
-    @media (max-width: 600px) {
-      .videos { padding: 20px 16px; margin-bottom: 20px; border-radius: 18px; }
-      .nav-links { column-gap: 16px; row-gap: 0; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>桃梓 Azusa 官方网站 · 与你一起发光</title>
+  <meta name="description" content="欢迎来到桃梓 Azusa 的温暖小世界。了解桃梓、前往 Bilibili 直播间、欣赏视频作品，与大家留言交流。">
+  <meta name="theme-color" content="#FAF9FC">
+  <link rel="canonical" href="https://azusatake.github.io/new-repository/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="桃梓 Azusa 官方网站 · 与你一起发光">
+  <meta property="og:description" content="一个温柔又可爱的虚拟主播，正在和你连结中。直播、作品与陪伴，都在这里。">
+  <meta property="og:url" content="https://azusatake.github.io/new-repository/">
+  <meta property="og:image" content="https://azusatake.github.io/new-repository/avatar.jpg">
+  <meta property="og:image:alt" content="桃梓 Azusa 的角色头像">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site-data.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
-  <nav class="site-nav" aria-label="主要导航">
-    <a class="brand" href="#">桃梓Azusa ✿</a>
-    <div class="nav-links"><a href="#about">关于我</a><a href="#stream">看直播</a><a href="#videos">我的视频</a><a href="#chat">留言</a><a href="#fans">粉丝专区</a></div>
-  </nav>
-  <header>
-    <div class="eyebrow">AZUSA · 一个温暖的小世界</div>
-    <h1>欢迎来到桃梓Azusa的频道！</h1>
-    <p>一个温柔又可爱的虚拟主播，正在和你连结中…</p>
-    <div class="hero-actions"><a class="button" href="#stream">一起看直播 ↗</a><a class="button secondary" href="#about">认识桃梓</a></div>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="主要导航">
+      <a class="brand" href="#home" aria-label="桃梓 Azusa 首页"><span class="brand-flower" aria-hidden="true">✳︎</span><span>桃梓 <b>Azusa</b><small>OFFICIAL WEBSITE</small></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" hidden>菜单 <span aria-hidden="true">☰</span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="#home">首页</a><a href="#about">关于桃梓</a><a href="#stream">直播间</a><a href="#videos">视频作品</a><a href="#chat">粉丝互动</a>
+      </div>
+    </nav>
   </header>
   <main id="main">
+    <section class="hero wrap" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A LITTLE LIGHT, JUST FOR YOU</p>
+        <h1 id="hero-title">在这个小小世界，<br>与你一起<span>发光。</span></h1>
+        <p class="hero-name">桃梓 <span>Azusa</span><i aria-hidden="true"> ✧</i></p>
+        <p class="intro">一个温柔又可爱的虚拟主播，正在和你连结中…<br>愿每一次相遇，都为你的日常添一点温暖。</p>
+        <div class="actions"><a class="button" href="https://live.bilibili.com/1702263460?broadcast_type=0&amp;is_room_feed=1&amp;spm_id_from=333.1387.to_liveroom.0.click&amp;live_from=86002" target="_blank" rel="noopener noreferrer">去 Bilibili 直播间 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a><a class="text-link" href="#videos">探索视频作品 <span aria-hidden="true">↓</span></a></div>
+        <p class="hero-footnote">WELCOME TO MY LITTLE WORLD <span aria-hidden="true">── ✦</span></p>
+      </div>
+      <!-- Replace the image inside .character-art with approved full-body artwork later. -->
+      <figure class="character-art">
+        <div class="orbit" aria-hidden="true"></div><span class="star star-one" aria-hidden="true">✦</span><span class="star star-two" aria-hidden="true">✧</span><span class="star star-three" aria-hidden="true">✧</span>
+        <picture><source srcset="assets/avatar-320.webp 320w, assets/avatar-640.webp 640w" sizes="(max-width: 760px) 74vw, 420px" type="image/webp"><img src="avatar.jpg" width="640" height="640" alt="桃梓 Azusa 的银白发猫耳角色头像" fetchpriority="high"></picture>
+        <figcaption><span>桃梓 Azusa</span><small>很高兴，在这里遇见你。</small></figcaption>
+      </figure>
+      <a class="scroll-hint" href="#about">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
+    </section>
 
-  <section class="avatar">
-    <figure><img src="avatar.jpg" alt="桃梓Azusa的虚拟主播头像" width="180" height="180" /><figcaption>很高兴，在这里遇见你 ✿</figcaption></figure>
-  </section>
+    <section class="section wrap reveal" id="about" aria-labelledby="about-title">
+      <div class="section-heading"><p class="eyebrow">01 / ABOUT AZUSA</p><h2 id="about-title">认识桃梓<span class="heading-star" aria-hidden="true">✧</span></h2></div>
+      <div class="about-layout">
+        <div class="about-portrait"><img src="assets/avatar-320.webp" width="320" height="320" loading="lazy" decoding="async" alt="桃梓的角色头像"><span aria-hidden="true">HELLO, I'M AZUSA.</span></div>
+        <div class="about-copy"><h3>把温暖，传给每一个人。</h3><p>我是虚拟主播桃梓Azusa。我的梦想是把温暖传给每一个人。欢迎你来到这个小小世界，一起发光发热！</p>
+          <dl class="profile"><div><dt>名字</dt><dd>桃梓 Azusa</dd></div><div><dt>相遇的地方</dt><dd>Bilibili</dd></div><div><dt>更多角色资料</dt><dd class="muted">等待桃梓补充</dd></div></dl>
+          <a class="text-link" href="https://live.bilibili.com/1702263460" target="_blank" rel="noopener noreferrer">在 Bilibili 与我相遇 ↗<span class="sr-only">（新窗口）</span></a>
+        </div>
+      </div>
+    </section>
 
-  <section class="about" id="about" aria-labelledby="about-title">
-    <span class="section-label">ABOUT ME</span>
-    <h2 id="about-title">关于桃梓Azusa</h2>
-    <p>我是虚拟主播桃梓Azusa。我的梦想是把温暖传给每一个人。欢迎你来到这个小小世界，一起发光发热！</p>
-  </section>
-
-  <section class="stream" id="stream" aria-labelledby="stream-title">
-    <span class="section-label">LIVE ROOM</span>
-    <h2 id="stream-title">直播间</h2>
-    <p class="stream-note">把日常变得可爱一点，一起去直播间聊聊天吧。</p>
-    <div class="live-card">
-      <span class="section-label">BILIBILI · 直播间 1702263460</span>
-      <h3>来直播间，和桃梓见面</h3>
-      <p>直播请在 Bilibili 观看，点击下方链接即可前往。</p>
+    <div class="live-band">
+      <section class="section wrap reveal" id="stream" aria-labelledby="stream-title">
+        <div class="section-heading"><p class="eyebrow">02 / LIVE ROOM</p><h2 id="stream-title">下一次相遇，在直播间</h2></div>
+        <div class="live-layout"><div><p class="room-label">BILIBILI <span>ROOM / 1702263460</span></p><h3>留一点时间，<br>一起分享今天。</h3><p>把日常变得可爱一点。聊天、陪伴，和属于我们的小时光。</p><a class="button" href="https://live.bilibili.com/1702263460?broadcast_type=0&amp;is_room_feed=1&amp;spm_id_from=333.1387.to_liveroom.0.click&amp;live_from=86002" target="_blank" rel="noopener noreferrer">前往直播间 ↗<span class="sr-only">（新窗口）</span></a></div>
+          <aside class="schedule" aria-labelledby="schedule-title"><span class="eyebrow">NEXT TIME, WITH YOU</span><h3 id="schedule-title">直播日程</h3><p class="schedule-empty">新日程，敬请期待。</p><p class="muted">日程尚未公布，请以 Bilibili 直播间动态为准。</p><div class="schedule-bottom"><span>直播状态</span><span>请前往 Bilibili 查看 ↗</span></div></aside>
+        </div>
+      </section>
     </div>
-    <a class="stream-link" href="https://live.bilibili.com/1702263460?broadcast_type=0&amp;is_room_feed=1&amp;spm_id_from=333.1387.to_liveroom.0.click&amp;live_from=86002" target="_blank" rel="noopener noreferrer">前往 Bilibili 直播间（新窗口）</a>
-  </section>
 
+    <section class="section wrap reveal" id="videos" aria-labelledby="videos-title">
+      <div class="section-heading heading-row"><div><p class="eyebrow">03 / VIDEO COLLECTION</p><h2 id="videos-title">把喜欢的瞬间，收藏起来。</h2></div><p class="muted">属于桃梓的小小影像集。</p></div>
+      <div class="video-filters" role="group" aria-label="筛选视频分类" hidden></div>
+      <div class="video-grid" id="video-grid"></div>
+      <p class="video-empty muted" role="status" hidden>这个分类还没有作品，敬请期待。</p>
+      <noscript><p>启用 JavaScript 可在本站播放视频，或<a href="https://www.bilibili.com/video/BV1hSngzHEe4/" target="_blank" rel="noopener noreferrer">前往 Bilibili 观看 BV1hSngzHEe4（新窗口）</a>。</p></noscript>
+    </section>
 
-  <section class="videos" id="videos" aria-labelledby="videos-title">
-    <span class="section-label">MY VIDEOS</span>
-    <h2 id="videos-title">我的视频</h2>
-    <p>把喜欢的瞬间留在这里，和你一起慢慢回看。</p>
-    <div class="video-player">
-      <iframe loading="lazy" title="桃梓Azusa的视频作品 BV1hSngzHEe4" src="https://player.bilibili.com/player.html?bvid=BV1hSngzHEe4&amp;page=1&amp;autoplay=0" allowfullscreen></iframe>
-    </div>
-    <p class="stream-note">如果播放器无法显示，可以在 Bilibili 打开观看。</p>
-    <a class="stream-link" href="https://www.bilibili.com/video/BV1hSngzHEe4/" target="_blank" rel="noopener noreferrer">在 Bilibili 观看完整视频（新窗口）</a>
-  </section>
-
-  <section class="chat" id="chat" aria-labelledby="chat-title">
-    <span class="section-label">COMMUNITY</span>
-    <h2 id="chat-title">粉丝留言区</h2>
-    <p>欢迎留下想对桃梓说的话，也可以回复其他人的留言。发表评论需要登录 GitHub 账号。</p>
-    <div class="giscus"></div>
-    <script src="https://giscus.app/client.js"
+    <section class="section wrap reveal" id="chat" aria-labelledby="chat-title">
+      <div class="section-heading"><p class="eyebrow">04 / FROM YOU, WITH LOVE</p><h2 id="chat-title">留下你的声音。</h2></div>
+      <div class="community-intro"><p>想说的话、今天的小确幸，都可以留在这里。<br>欢迎留言，也欢迎回复彼此。</p><p class="comment-note">评论需要登录 GitHub 账号。<br>留言由 Giscus 提供并保存在 GitHub Discussions。</p></div>
+      <div class="comments-panel"><div class="giscus"></div>
+          <script src="https://giscus.app/client.js"
             data-repo="Azusatake/new-repository"
             data-repo-id="R_kgDOOd0YRw"
             data-category="Announcements"
@@ -258,20 +96,12 @@
             data-lang="zh-CN"
             crossorigin="anonymous"
             async></script>
-    <p class="stream-note">留言由 Giscus 提供并保存在 GitHub Discussions。若评论区未显示，请检查网络，或<a href="https://github.com/Azusatake/new-repository/discussions" target="_blank" rel="noopener noreferrer">前往 GitHub 查看讨论（新窗口）</a>。</p>
-    <noscript><p>请启用 JavaScript 加载评论区，或通过上方链接前往 GitHub 参与讨论。</p></noscript>
-  </section>
-
-  <section class="fans" id="fans" aria-labelledby="fans-title">
-    <span class="section-label">FOR YOU</span>
-    <h2 id="fans-title">粉丝专区</h2>
-    <p>谢谢每一份陪伴与喜欢。欢迎在留言区交流；投稿和粉丝活动的后续消息会在这里与大家分享。</p>
-    <details><summary>在哪里关注直播动态？</summary><p>点击上方“前往 Bilibili 直播间”，在 Bilibili 关注主播，查看最新开播动态。</p></details>
-  </section>
-
+      <p class="muted comment-fallback">评论区未加载？<a href="https://github.com/Azusatake/new-repository/discussions" target="_blank" rel="noopener noreferrer">前往 GitHub Discussions ↗<span class="sr-only">（新窗口）</span></a></p><noscript><p>请启用 JavaScript 加载评论，或使用上方 GitHub Discussions 链接参与讨论。</p></noscript></div>
+      <div class="fan-future" id="fans"><div><span class="eyebrow">MORE TO COME</span><h3>把更多故事，留给未来。</h3></div><p>粉丝投稿 · 活动企划 · 更多互动<br><span class="muted">尚未开放，后续消息将在这里分享。</span></p></div>
+      <details><summary>在哪里关注直播动态？</summary><p>前往 Bilibili 直播间关注主播，查看最新开播动态。</p></details>
+    </section>
   </main>
-  <footer>
-    &copy; 2026 桃梓Azusa频道 | 由你点亮的虚拟世界
-  </footer>
+  <footer class="footer wrap"><a class="brand" href="#home">桃梓 <b>Azusa</b> <span aria-hidden="true">✳︎</span></a><p>由你点亮的虚拟世界。<br><small>© 2026 桃梓 Azusa</small></p><a class="text-link" href="#home">回到顶部 ↑</a></footer>
+  <dialog class="video-dialog" aria-labelledby="player-title"><div class="dialog-heading"><h2 id="player-title">视频作品</h2><button class="close-dialog" type="button" aria-label="关闭视频">关闭 ✕</button></div><div id="player-container"></div><p class="muted">播放器无法显示时，可前往 Bilibili 观看。</p><a id="player-original" class="text-link" target="_blank" rel="noopener noreferrer">在 Bilibili 打开 ↗<span class="sr-only">（新窗口）</span></a></dialog>
 </body>
 </html>
